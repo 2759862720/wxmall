@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.awifi.athena.dataservice.atomic.devicealarm.mapper.BusinessDeviceInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.awifi.athena.dataservice.atomic.devicealarm.entity.BusinessDeviceInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="device_id" property="deviceId" jdbcType="VARCHAR" />
+    <result column="adminuser_id" property="adminuserId" jdbcType="BIGINT" />
+    <result column="broadband_account_id" property="broadbandAccountId" jdbcType="BIGINT" />
+    <result column="online" property="online" jdbcType="BIT" />
+    <result column="acquisitionFrequency" property="acquisitionfrequency" jdbcType="INTEGER" />
+    <result column="device_key" property="deviceKey" jdbcType="VARCHAR" />
+    <result column="device_type" property="deviceType" jdbcType="VARCHAR" />
+    <result column="device_name" property="deviceName" jdbcType="VARCHAR" />
+    <result column="corporation_id" property="corporationId" jdbcType="BIGINT" />
+    <result column="model_id" property="modelId" jdbcType="BIGINT" />
+    <result column="protocol_code" property="protocolCode" jdbcType="VARCHAR" />
+    <result column="pin_code" property="pinCode" jdbcType="VARCHAR" />
+    <result column="ip_addr" property="ipAddr" jdbcType="VARCHAR" />
+    <result column="mac_addr" property="macAddr" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="INTEGER" />
+    <result column="county" property="county" jdbcType="INTEGER" />
+    <result column="xpos" property="xpos" jdbcType="DECIMAL" />
+    <result column="ypos" property="ypos" jdbcType="DECIMAL" />
+    <result column="bind_date" property="bindDate" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="modify_by" property="modifyBy" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, device_id, adminuser_id, broadband_account_id, online, acquisitionFrequency, 
+    device_key, device_type, device_name, corporation_id, model_id, protocol_code, pin_code, 
+    ip_addr, mac_addr, province, city, county, xpos, ypos, bind_date, status, create_by, 
+    create_date, modify_by, modify_date, remarks
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from business_device_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from business_device_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.awifi.athena.dataservice.atomic.devicealarm.entity.BusinessDeviceInfo" >
+    insert into business_device_info (id, device_id, adminuser_id, 
+      broadband_account_id, online, acquisitionFrequency, 
+      device_key, device_type, device_name, 
+      corporation_id, model_id, protocol_code, 
+      pin_code, ip_addr, mac_addr, 
+      province, city, county, 
+      xpos, ypos, bind_date, 
+      status, create_by, create_date, 
+      modify_by, modify_date, remarks
+      )
+    values (#{id,jdbcType=BIGINT}, #{deviceId,jdbcType=VARCHAR}, #{adminuserId,jdbcType=BIGINT}, 
+      #{broadbandAccountId,jdbcType=BIGINT}, #{online,jdbcType=BIT}, #{acquisitionfrequency,jdbcType=INTEGER}, 
+      #{deviceKey,jdbcType=VARCHAR}, #{deviceType,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR}, 
+      #{corporationId,jdbcType=BIGINT}, #{modelId,jdbcType=BIGINT}, #{protocolCode,jdbcType=VARCHAR}, 
+      #{pinCode,jdbcType=VARCHAR}, #{ipAddr,jdbcType=VARCHAR}, #{macAddr,jdbcType=VARCHAR}, 
+      #{province,jdbcType=INTEGER}, #{city,jdbcType=INTEGER}, #{county,jdbcType=INTEGER}, 
+      #{xpos,jdbcType=DECIMAL}, #{ypos,jdbcType=DECIMAL}, #{bindDate,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{modifyBy,jdbcType=VARCHAR}, #{modifyDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.awifi.athena.dataservice.atomic.devicealarm.entity.BusinessDeviceInfo" >
+    insert into business_device_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="deviceId != null" >
+        device_id,
+      </if>
+      <if test="adminuserId != null" >
+        adminuser_id,
+      </if>
+      <if test="broadbandAccountId != null" >
+        broadband_account_id,
+      </if>
+      <if test="online != null" >
+        online,
+      </if>
+      <if test="acquisitionfrequency != null" >
+        acquisitionFrequency,
+      </if>
+      <if test="deviceKey != null" >
+        device_key,
+      </if>
+      <if test="deviceType != null" >
+        device_type,
+      </if>
+      <if test="deviceName != null" >
+        device_name,
+      </if>
+      <if test="corporationId != null" >
+        corporation_id,
+      </if>
+      <if test="modelId != null" >
+        model_id,
+      </if>
+      <if test="protocolCode != null" >
+        protocol_code,
+      </if>
+      <if test="pinCode != null" >
+        pin_code,
+      </if>
+      <if test="ipAddr != null" >
+        ip_addr,
+      </if>
+      <if test="macAddr != null" >
+        mac_addr,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="xpos != null" >
+        xpos,
+      </if>
+      <if test="ypos != null" >
+        ypos,
+      </if>
+      <if test="bindDate != null" >
+        bind_date,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="modifyBy != null" >
+        modify_by,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="deviceId != null" >
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="adminuserId != null" >
+        #{adminuserId,jdbcType=BIGINT},
+      </if>
+      <if test="broadbandAccountId != null" >
+        #{broadbandAccountId,jdbcType=BIGINT},
+      </if>
+      <if test="online != null" >
+        #{online,jdbcType=BIT},
+      </if>
+      <if test="acquisitionfrequency != null" >
+        #{acquisitionfrequency,jdbcType=INTEGER},
+      </if>
+      <if test="deviceKey != null" >
+        #{deviceKey,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null" >
+        #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null" >
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="corporationId != null" >
+        #{corporationId,jdbcType=BIGINT},
+      </if>
+      <if test="modelId != null" >
+        #{modelId,jdbcType=BIGINT},
+      </if>
+      <if test="protocolCode != null" >
+        #{protocolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pinCode != null" >
+        #{pinCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddr != null" >
+        #{ipAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="macAddr != null" >
+        #{macAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=INTEGER},
+      </if>
+      <if test="xpos != null" >
+        #{xpos,jdbcType=DECIMAL},
+      </if>
+      <if test="ypos != null" >
+        #{ypos,jdbcType=DECIMAL},
+      </if>
+      <if test="bindDate != null" >
+        #{bindDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.awifi.athena.dataservice.atomic.devicealarm.entity.BusinessDeviceInfo" >
+    update business_device_info
+    <set >
+      <if test="deviceId != null" >
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="adminuserId != null" >
+        adminuser_id = #{adminuserId,jdbcType=BIGINT},
+      </if>
+      <if test="broadbandAccountId != null" >
+        broadband_account_id = #{broadbandAccountId,jdbcType=BIGINT},
+      </if>
+      <if test="online != null" >
+        online = #{online,jdbcType=BIT},
+      </if>
+      <if test="acquisitionfrequency != null" >
+        acquisitionFrequency = #{acquisitionfrequency,jdbcType=INTEGER},
+      </if>
+      <if test="deviceKey != null" >
+        device_key = #{deviceKey,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null" >
+        device_type = #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null" >
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="corporationId != null" >
+        corporation_id = #{corporationId,jdbcType=BIGINT},
+      </if>
+      <if test="modelId != null" >
+        model_id = #{modelId,jdbcType=BIGINT},
+      </if>
+      <if test="protocolCode != null" >
+        protocol_code = #{protocolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pinCode != null" >
+        pin_code = #{pinCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddr != null" >
+        ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="macAddr != null" >
+        mac_addr = #{macAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=INTEGER},
+      </if>
+      <if test="xpos != null" >
+        xpos = #{xpos,jdbcType=DECIMAL},
+      </if>
+      <if test="ypos != null" >
+        ypos = #{ypos,jdbcType=DECIMAL},
+      </if>
+      <if test="bindDate != null" >
+        bind_date = #{bindDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        modify_by = #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.awifi.athena.dataservice.atomic.devicealarm.entity.BusinessDeviceInfo" >
+    update business_device_info
+    set device_id = #{deviceId,jdbcType=VARCHAR},
+      adminuser_id = #{adminuserId,jdbcType=BIGINT},
+      broadband_account_id = #{broadbandAccountId,jdbcType=BIGINT},
+      online = #{online,jdbcType=BIT},
+      acquisitionFrequency = #{acquisitionfrequency,jdbcType=INTEGER},
+      device_key = #{deviceKey,jdbcType=VARCHAR},
+      device_type = #{deviceType,jdbcType=VARCHAR},
+      device_name = #{deviceName,jdbcType=VARCHAR},
+      corporation_id = #{corporationId,jdbcType=BIGINT},
+      model_id = #{modelId,jdbcType=BIGINT},
+      protocol_code = #{protocolCode,jdbcType=VARCHAR},
+      pin_code = #{pinCode,jdbcType=VARCHAR},
+      ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      mac_addr = #{macAddr,jdbcType=VARCHAR},
+      province = #{province,jdbcType=INTEGER},
+      city = #{city,jdbcType=INTEGER},
+      county = #{county,jdbcType=INTEGER},
+      xpos = #{xpos,jdbcType=DECIMAL},
+      ypos = #{ypos,jdbcType=DECIMAL},
+      bind_date = #{bindDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
